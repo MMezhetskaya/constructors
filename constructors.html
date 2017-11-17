@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<!-- TASK 1
+1. Создайте конструктор - Automobile создающий объекты
+со свойствами color (цвет), model (модель), year (год выпуска), manufact (производитель)
+и методами: whatColor (позволяющий узнать цвет автомобиля)
+и autoInfo (позволяющий узнать модель, год выпуска, и производителя автомобиля).
+
+2. Создайте с помощью конструктора Automobile объекты перечисленные ниже
+и обратитесь к их методам whatColor и autoInfo:
+   1. Nissan Skyline 2007 Красный;
+   2. Toyota Corolla 2009 Черный;
+   3. Volkswagen Golf 2009 Синий
+
+3. Создайте конструктор - Driver наследующий свойства и методы у конструктора Automobile.
+Конструктор должен добавлять к функциональности свойство driver содержащее
+свойства name (имя хозяина автомобиля) и experience (водительский стаж)
+и метод driverInfo (позволяющий узнать имя и стаж хозяина автомобиля).
+
+4. Создайте с помощью конструктора
+Driver объект: Дмитрий 3 Ford Focus 2010 Белый.
+И обратитесь к его методам whatColor, autoInfo и driverInfo.-->
+
+<html>
+<head>
+    <title>Constructor Automobile</title>
+    <script type="text/javascript">
+        /*Конструктором становится любая функция, вызванная через new*/
+        /*базовая функция-конструктор -Automobile*/
+        function Automobile() {
+            this.color = "color";
+            this.model = "model";
+            this.year= "year";
+            this.manufact= "manufact";
+            // методы экземпляра
+            this.whatColor = function () {
+               document.write("This is " + this.color + "<br />");
+            }
+            this.autoInfo = function(){
+                document.write("This model is "+this.model+ ", year "+this.year+ ", manufactured by "+ this.manufact+"<br/>");
+            }
+        }
+
+        /*Nissan Skyline 2007 Красный;*/
+        var nissan = new Automobile();
+        nissan.color="red";
+        nissan.model="Nissan Skyline";
+        nissan.year="2007";
+        nissan.manufact="Nissan";
+        nissan.whatColor();
+        nissan.autoInfo();
+
+        /* Toyota Corolla 2009 Черный;*/
+        var toyota= new Automobile();
+        toyota.color="black";
+        toyota.model="Toyota Corolla";
+        toyota.year="2009";
+        toyota.manufact="Toyota";
+        toyota.whatColor();
+        toyota.autoInfo();
+
+        /*Volkswagen Golf 2009 Синий*/
+        var volkswagen= new Automobile();
+        volkswagen.color="blue";
+        volkswagen.model="Volkswagen Golf";
+        volkswagen.year="2009";
+        volkswagen.manufact="Volkswagen";
+        volkswagen.whatColor();
+        volkswagen.autoInfo();
+
+        // производная функция конструктор
+        function Driver() {
+            this.name = "name";
+            this.experience = "experience";
+            this.driverInfo = function () {
+                document.write("This car belongs to " + this.name +" with driving experience of  " + this.experience+" years <br />");
+            }
+        }
+
+        document.write("<hr/>");
+
+        // Создаем экземпляр родителя
+        var automobile = new Automobile();
+
+        // наследуем Driver от Automobile устанавливая функцию как прототип.
+        Driver.prototype = automobile;
+
+        /*Driver объект: Дмитрий 3 Ford Focus 2010 Белый.*/
+        var dmitriy= new Driver();
+        dmitriy.name ="Dmitriy";
+        dmitriy.experience="3";
+        dmitriy.color="white";
+        dmitriy.model = "Ford Focus";
+        dmitriy.year= "2010";
+        dmitriy.manufact= "Ford";
+        dmitriy.whatColor();
+        dmitriy.autoInfo();
+        dmitriy.driverInfo();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
